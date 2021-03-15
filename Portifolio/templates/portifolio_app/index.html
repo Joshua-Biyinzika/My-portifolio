@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<title>
+        {% block title %} Home {% endblock %}
+     </title>
+
+
+    <section class="intro-section" >
+        <div class="intro" data-aos="fade-down">
+            <div class="intro-head">
+                <img src="{% static 'images/joshua_biyinzika.jpg' %}" class="img-fluid" alt="Joshua Biyinzika">
+            </div>
+            <p class="intro-text">
+               Am Joshua, a freelance web developer and blogger.
+            </p>
+
+            <div class="intro-btn">
+                <a href="#" class="read-more btn btn-lg">Read More</a>
+            </div>
+           
+        </div>
+    </section>
+
+
+    <section class="skills">
+        <div class="container skills-container">
+            <h2 >
+                My skills
+            </h2>
+
+            <div class="skill-sets">
+                <div class="row">
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <ul>
+                            <li class="item-1">
+                                Python
+                            </li>
+                            <li  class="item-2">
+                               Django
+                            </li>
+                            <li  class="item-3">
+                               Flask
+                            </li>
+                            <li  class="item-4">
+                                PostgreSQL
+                            </li>
+                        </ul>
+                    
+                    </div>
+
+                    <div class="col-lg-6" data-aos="fade-left">
+                        <ul>
+                            <li  class="item-4">
+                               HTML5
+                            </li>
+                            <li  class="item-3">
+                              CSS3
+                            </li>
+                            <li  class="item-2">
+                              Javascript
+                            </li>
+                            <li  class="item-1">
+                                React js
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="work">
+        <div class="container ">
+            <div class="samples">
+                <h2>
+                    Samples of my work
+                </h2>
+            </div>
+            <div class="work-pieces">
+                <div class="row">
+                    {% for my_project in portifolio_project %}
+
+                    <div class="col-lg-3 col-md-6" data-aos="zoom-in-up">
+                         <a href="{{ my_project.get_absolute_url }}">
+                        <img src="{{ my_project.featured_img.url }}" alt="" class="img-fluid">
+                         </a>
+                    </div>
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="see-more-btn">
+            <a href="#" class="see-more btn btn-lg">see more</a>
+        </div>
+    </section>
+
+
+    <section class="contact container">
+        <h2>
+            Let's get in touch
+        </h2>
+        <div class="form">
+            <form  class="form-group"  action="https://formsubmit.co/joshuazoeug@gmail.com" method="post">
+                <input data-aos="fade-right" class="form-control initials" type="text" placeholder="Your name" required>
+                <input data-aos="fade-left" class="form-control initials" type="email" name="email" placeholder="Your email" required>
+                <textarea data-aos="fade-right" class="form-control" name="textarea" placeholder="Your message" cols="30" rows="10" required></textarea>
+                <input type="submit" value="Submit" class="btn btn-lg contact-btn">
+            </form>
+        </div>
+    </section>
+
+{% endblock %}
+   
+
+    

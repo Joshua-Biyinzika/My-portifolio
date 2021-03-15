@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<title>
+        {% block title %} Portifolio {% endblock %}
+     </title>
+
+
+<link rel="stylesheet" href="{% static 'css/portifolio.css' %}">
+
+    <h1 class="portifolio-heading" data-aos="fade-up">
+        My Portfolio
+    </h1>
+    
+<div class="container" data-aos="fade-up">
+   <div class="buttons d-flex " id="btn-container">
+       <button class="btn btn-lg filter-btn ml-10" id="all" onclick="filterSelectionAll('all')">
+           All
+       </button>
+
+       <button class="btn btn-lg filter-btn ml-10" id="first" onclick="filterSelectionAll('second')">
+        HTML5/CSS3
+    </button>
+
+    <button class="btn btn-lg filter-btn ml-10" id="second" onclick="filterSelectionAll('third')">
+        DJANGO
+    </button>
+
+<!--    <button class="btn btn-lg filter-btn ml-10" id="third" onclick="filterSelectionAll('fourth')">-->
+<!--        fourth-->
+<!--    </button>-->
+   </div>
+
+   <div class="portifolio-items">
+       <div class="row">
+
+           {% for item in portifolio_project %}
+           <div class="col-lg-3 portifolio-item {{ item.filter_class }}" data-aos="zoom-in-up">
+               <a href="{{ item.get_absolute_url }}">
+                   <img src="{{ item.featured_img.url }}" alt="" class="img-fluid">
+               </a>
+           </div>
+            {% endfor %}
+
+       </div>
+   </div>
+</div>
+
+
+
+
+
+<script>
+// filtering portifolio items
+filterSelectionAll('all')
+
+    let allBtn = document.getElementById('all');
+let firstBtn = document.getElementById('first');
+let secondlBtn = document.getElementById('second');
+let thirdBtn = document.getElementById('third');
+let items = document.getElementsByClassName('portifolio-item')
+
+
+function filterSelectionAll(range){
+    var x, i;
+    x = document.getElementsByClassName('portifolio-item');
+    if (range == 'all') range = '';
+
+    for (i=0; i<x.length; i++){
+        removeClass(x[i], 'show');
+        if (x[i].className.indexOf(range) > -1) addClass(x[i], 'show');
+
+    }
+}
+
+
+function addClass(element, name){
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+
+    for (i=0; i<arr2.length; i++){
+        if (arr1.indexOf(arr2[i]) == -1){
+            element.className += ' ' + arr2[i];
+        }
+    }
+   
+}
+
+function removeClass(element, name){
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2= name.split(" ")
+    for (i=0; i<arr2.length; i++){
+        while (arr1.indexOf(arr2[i]) > -1){
+            arr1.splice(arr1.indexOf(arr2[i]), 1);
+        }
+    }
+    element.className = arr1.join(" ");
+
+}
+
+var btnContainer = document.getElementById('btn-container');
+
+var btn =btnContainer.getElementsByClassName('btn');
+
+for (var i=0; i<btn.length; i++){
+    btn[i].addEventListener('click', function(){
+        var current = document.getElementsByClassName('active');
+        current[0].className = current[0].className.replace('active', '');
+        this.className += 'active';
+    })
+}
+
+
+</script>
+
+
+{% endblock %}
+

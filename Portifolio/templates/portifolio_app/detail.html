@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<title>
+        {% block title %} detail {% endblock %}
+</title>
+
+<link rel="stylesheet" href="{% static 'css/detail.css' %}">
+
+    <h2 class="project-name" data-aos="fade-down">{{ project.name }}</h2>
+
+    <div class="container">
+       
+
+        <div id="featured-project-image" data-aos="zoom-in">
+            <img src="{{ project.imageURL }}"  alt="" id="featured-img">
+        </div>
+
+        <h3 data-aos="fade-down">
+            Navigation
+        </h3>
+
+        <div class="slide-wrapper" data-aos="fade-up">
+            <button id="arrow-left">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+                
+
+            <div class="slider" id="img-slider">
+                {% for img in images %}
+                    <img src="{{ img.imageURL }}" class="active thumb" alt="">
+                {% endfor %}
+            </div>
+
+
+            <button id="arrow-right">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+
+
+    </div>
+
+    {% comment %} <section class="video">
+        <div class="video-description container">
+            <video src="#"></video>
+        </div>
+    </section> {% endcomment %}
+
+    <section class="description">
+        <div class="container">
+            <div class="overview" data-aos="fade-right">
+                <h2>
+                    Project Overview
+                </h2>
+                <p>
+                   {{ project.overview }}
+                </p>
+            </div>
+
+            <div class="goals" data-aos="fade-left">
+                <h2>
+                    Project Goals and achievements
+                </h2>
+                <p>
+                   {{ project.achievements }}
+                </p>
+            </div>
+
+            <div class="achievements" data-aos="fade-right">
+                <h2>
+                    Project Challenges
+                </h2>
+                <p>
+                    {{ project.challenges }}
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <script>
+        let thumbnails = document.getElementsByClassName('thumb');
+        let featured_img = document.getElementById('featured-img');
+        let activeImgs = document.getElementsByClassName('active')
+        let arrowLeft = document.getElementById('arrow-left')
+        let arrowRight = document.getElementById('arrow-right')
+
+        for (let i=0; i<thumbnails.length; i++){
+            thumbnails[i].addEventListener('mouseover', function(){
+               
+                if (activeImgs.length>0){
+                    activeImgs[0].classList.remove('active');
+                }
+
+                this.classList.add('active');
+                featured_img.src = this.src
+
+            })
+        }
+
+        arrowLeft.addEventListener('click', function(){
+            
+            document.getElementById('img-slider').scrollLeft-=180
+        })
+
+        arrowRight.addEventListener('click', function(){
+            
+            document.getElementById('img-slider').scrollLeft+=180
+        })
+
+</script>
+
+{% endblock %}

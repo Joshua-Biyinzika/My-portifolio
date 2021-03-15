@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<title>
+        {% block title %} About me {% endblock %}
+     </title>
+
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+
+<!--    <div class="vedio-intro ">-->
+<!--        <video class="about-vid" src="./Joshua Portifolio.mp4" controls></video>-->
+<!--    </div>-->
+
+    <div class="container about">
+        <h2 data-aos="fade-up">
+            About Me
+        </h2>
+
+        <p data-aos="fade-right">
+           Am Joshua,  a freelance junior web developer. <br> I am currentily stationed in Kampala, Uganda. 
+        </p>
+
+        <p data-aos="fade-left">
+            I work with both Frontend and Backend technologies. <br> 
+
+            I also set up ecommerce stores using shopify.
+           
+        </p>
+    </div>
+    
+{% endblock %}

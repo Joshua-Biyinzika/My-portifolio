@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" href="https://img.icons8.com/dusk/64/000000/monitor--v1.png">
+
+    <title>
+        {% block title %} base {% endblock %}
+     </title>
+</head>
+<body>
+
+<!--navbar-->
+
+<header >
+        <div class="navbar">
+
+            <span>
+                <button id="open">
+                    <i class="fas fa-bars fa-2x menu-icon" ></i>
+                </button>
+                <span class="menu">Menu</span>
+            </span>
+
+
+
+                <nav id="mySidenav" class="sidenav">
+
+                    <a href="#"  class="closebtn" id="close">&times;</a>
+
+                    <a href="{% url 'portfolio_app:index'  %}">Home</a>
+                    <a href="{% url 'portfolio_app:portfolio' %}">Portifolio</a>
+                    <a href="{% url 'portfolio_app:about' %}">About Me</a>
+                    <a href="#">Detail</a>
+                </nav>
+
+                <ul class="social-links">
+                   
+
+                    <li>
+                        <a href="#">
+                            <i class="fab fa-github fa-2x"></i>
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="#">
+                            <i class="fab fa-twitter fa-2x"></i>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://api.whatsapp.com/send?phone=256784180208">
+                            <i class="fab fa-whatsapp fa-2x"></i>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+
+
+    </header>
+
+<!--navbar end-->
+
+
+{% block content %}
+
+
+
+
+
+{% endblock %}
+
+<footer data-aos="fade-up">
+        <div class="container">
+            <h3>
+                Joshua Biyinzika
+            </h3>
+
+            <p>
+              All rights reserved  &copy; Joshua Biyinzika <span>current date</span>
+            </p>
+        </div>
+</footer>
+
+
+
+    <script src="{% static 'js/jqeury.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/all.js' %}"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script src="{% static 'js/index.js' %}"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

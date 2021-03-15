@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+   
+}
+
+.container{
+ background-color: #0b0c10;
+ }
+
+.portifolio-item{
+    display: none;
+}
+
+.show{
+    display: block;
+}
+
+.btn.active{
+    background-color: #333;
+    color: #fff;
+}
+
+.portifolio-heading{
+    text-align: center;
+
+}
+
+.portifolio-heading::after{
+    content: '';
+    display: block;
+    width: 4em;
+    background-color:#66fcf1;
+    height: 3px;
+    margin: 0.5em auto;
+}
+
+#btn-container{
+    text-align: center;
+   justify-content: center;
+   padding: 50px 0;
+}
+
+.filter-btn{
+    color: #0b0c10;
+    background-color: #66fcf1;
+    margin: 2px;
+}
+
+
+
+
+
+
+
